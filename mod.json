@@ -1,0 +1,41 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"android": "2.2081"
+	},
+	"version": "v1.0.0",
+	"id": "yourname.gameplay-recorder",
+	"name": "Gameplay Recorder",
+	"developer": "YourName",
+	"description": "Built-in screen recorder with game audio. Hardware encoded for low lag.",
+	"settings": {
+		"quality": {
+			"type": "string",
+			"name": "Video quality",
+			"description": "Height of the recorded video. Lower = less lag.",
+			"default": "720p",
+			"one-of": ["480p", "720p", "1080p"]
+		},
+		"fps": {
+			"type": "int",
+			"name": "Recording FPS",
+			"description": "Frames per second in the video.",
+			"default": 60,
+			"min": 30,
+			"max": 120
+		},
+		"bitrate": {
+			"type": "int",
+			"name": "Bitrate (Mbps)",
+			"description": "Higher = better looking video, bigger files.",
+			"default": 12,
+			"min": 2,
+			"max": 50
+		},
+		"record-audio": {
+			"type": "bool",
+			"name": "Record game audio",
+			"default": true
+		}
+	}
+}
