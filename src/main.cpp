@@ -357,7 +357,10 @@ struct Recorder {
         detachDsp();
         stopAtNs = nowNs() + 3000000000LL;
         stopping = true;
-        if (venc) AMediaCodec_signalEndOfInputStream(venc);
+        if (venc) { using SignalEosFn = media_status_t (*)(AMediaCodec*);
+    auto signalEos = (SignalEosFn)dlsym(RTLD_DEFAULT, "AMediaCodec_signalEndOfInputStream");
+    if (signalEos) signalEos(venc);
+        }
         if (worker.joinable()) worker.join();
         std::string path = outPath;
         teardown(glValid);
